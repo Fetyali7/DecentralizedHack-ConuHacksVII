@@ -14,5 +14,7 @@ async function main() {
     const client = Client.forTestnet();
 
     client.setOperator(myAccountId, myPrivateKey);
+    
+    client.close();
 }
 main();
