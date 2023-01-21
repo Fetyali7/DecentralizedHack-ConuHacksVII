@@ -10,5 +10,8 @@ public class decentralizedHack {
         AccountId myAccountId = AccountId.fromString(Dotenv.load().get("MY_ACCOUNT_ID"));
         PrivateKey myPrivateKey = PrivateKey.fromString(Dotenv.load().get("MY_PRIVATE_KEY"));  
 
+        //Create your Hedera Testnet client
+        Client client = Client.forTestnet();
+        client.setOperator(myAccountId, myPrivateKey);
     }
 }
