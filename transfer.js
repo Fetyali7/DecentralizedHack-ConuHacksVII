@@ -1,4 +1,4 @@
-const { Client, PrivateKey, AccountCreateTransaction, Hbar } = require("@hashgraph/sdk");
+const { Client, PrivateKey, AccountCreateTransaction, AccountBalanceQuery,Hbar } = require("@hashgraph/sdk");
 
 require("dotenv").config();
 
@@ -15,6 +15,16 @@ async function main() {
     const client = Client.forTestnet();
 
     client.setOperator(myAccountId, myPrivateKey);
+
+    const newAccountId = "0.0.49364015";
+
+    const sendHbar = await new TransferTransaction()
+     .addHbarTransfer(myAccountId, Hbar.fromTinybars(-1000)) //Sending account
+     .addHbarTransfer(newAccountId, Hbar.fromTinybars(1000)) //Receiving account
+     .execute(client);
+
+    const transactionRx = await sendHbar.getReceipt(client);
+    console.log{`Status of txn: ${transactionRx.status}`}
    
     client.close();
 }
