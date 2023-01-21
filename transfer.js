@@ -1,4 +1,4 @@
-const { Client, PrivateKey, AccountCreateTransaction, AccountBalanceQuery,Hbar } = require("@hashgraph/sdk");
+const { Client, PrivateKey, AccountCreateTransaction, AccountBalanceQuery, Hbar } = require("@hashgraph/sdk");
 
 require("dotenv").config();
 
@@ -9,8 +9,8 @@ async function main() {
     const myPrivateKey = process.env.MY_PRIVATE_KEY;
 
     // If we weren't able to grab it, we should throw a new error
-    if (!myAccountId || !myPrivateKey) {
-        throw new Error("Environment variables MY_ACCOUNT_ID and MY_PRIVATE_KEY must be present");
+    if (myAccountId == null || myPrivateKey == null) {
+        throw new Error("Environment variables myAccountId and myPrivateKey must be present");
     }
     const client = Client.forTestnet();
 
@@ -24,8 +24,14 @@ async function main() {
      .execute(client);
 
     const transactionRx = await sendHbar.getReceipt(client);
-    console.log{`Status of txn: ${transactionRx.status}`}
-   
+    console.log(`Status of txn: ${transactionRx.status}`)
+    
+    const getNewBalance = await new AccountBalanceQuery()
+        .setAccountId(newAccountId)
+        .execute(client);
+    
+    console.log(`New balance: ${getNewBalance.hbars.toTinybars()}`)
+
     client.close();
 }
 main();
