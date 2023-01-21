@@ -11,5 +11,8 @@ async function main() {
     if (!myAccountId || !myPrivateKey) {
         throw new Error("Environment variables MY_ACCOUNT_ID and MY_PRIVATE_KEY must be present");
     }
+    const client = Client.forTestnet();
+
+    client.setOperator(myAccountId, myPrivateKey);
 }
 main();
