@@ -15,19 +15,6 @@ async function main() {
     const client = Client.forTestnet();
 
     client.setOperator(myAccountId, myPrivateKey);
-    
-    const newAccountPrivateKey = PrivateKey.generateED25519(); 
-    const newAccountPublicKey = newAccountPrivateKey.publicKey;
-    
-    const newAccount = await new AccountCreateTransaction()
-        .setKey(newAccountPublicKey)
-        .setInitialBalance(Hbar.fromTinybars(1000))
-        .execute(client);
-    
-    const getReceipt = await newAccount.getReceipt(client);
-    const newAccountId = getReceipt.accountId;
-    
-    console.log('New account ID: ${newAccountId}')
    
     client.close();
 }
