@@ -25,7 +25,7 @@ async function main() {
         .execute(client);
     
     const getReceipt = await newAccount.getReceipt(client);
-    constant newAccountId = getReceipt.accountId;
+    const newAccountId = getReceipt.accountId;
     
     console.log('New account ID: ${newAccountId}')
    
