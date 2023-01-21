@@ -1,4 +1,4 @@
-const { Client, PrivateKey, AccountCreateTransaction, AccountBalanceQuery, Hbar } = require("@hashgraph/sdk");
+const { Client, PrivateKey, AccountCreateTransaction, Hbar } = require("@hashgraph/sdk");
 
 require("dotenv").config();
 
