@@ -1,5 +1,5 @@
 # DecentralizedHack-ConuHacksVII
-Blockchain Network Project on Hedera and Wix
+# Blockchain Network Project on Hedera and Wix
 
 This repository contains the code for a blockchain project that utilizes the Hedera network and is hosted on Wix.com. The project is designed to provide an innovative way to transfer electronic documents with a large amount of data using blockchain technology on a decentralized network.
 
