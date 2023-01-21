@@ -19,6 +19,11 @@ async function main() {
     const newAccountPrivateKey = PrivateKey.generateED25519(); 
     const newAccountPublicKey = newAccountPrivateKey.d8823f57ef5a75e50f9b2800d41e249f3585258c848bc3d5529e52a70e02b782;
     
+    const newAccount = await new AccountCreateTransaction()
+        .setKey(newAccountPublicKey)
+        .setInitialBalance(Hbar.fromTinybars(1000))
+        .execute(client);
+    
     client.close();
 }
 main();
